@@ -16,6 +16,7 @@ import path from 'path'
 import {TiktokDownloader} from "@tobyg74/tiktok-api-dl";
 import {autoRetry} from "@grammyjs/auto-retry";
 import {Buffer} from "buffer";
+import 'dotenv/config'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,9 +24,9 @@ const __dirname = dirname(__filename);
 
 const apiId = 21102006;
 const apiHash = "b1bd8f4b57de3ba7a0a04d1c93a84a00";
-const stringSession = new StringSession("1AgAOMTQ5LjE1NC4xNjcuNDEBuz2p9cQ2FCArVjhl9oexwRL60CbgeLuj3ZghZ38BHL52sfNBVkmLFTjfw1zaRkgCL6qQkIgOPSeNcEmmQEEvlbCoiioSjJTR+cmMPIOxzZA+nJJ4Rnka0Tq3wEmO+xnYdEAyvNZxZBxNoAop5C8K65lgU1REzt37QjGtHOqsz1WPUOnu+WniSQuWZwIRHc1xswbLgQWcm2omd7TN6xc1pYL06G7SCSihVRxhbJlfeuMAG8uKr2iAJ2fTUogi55cMn0BecwW9I+L/KbtLUkoumKAtfRdXuypyWl+rbMFNLhaWxg2oNUoBcUmD8w2tmZ4nv4p+n2y5iQ4mKidF4woB05w="); // Вставьте сюда ваш StringSession, если у вас есть
+const stringSession = new StringSession(process.env.STRING_SESSION); // Вставьте сюда ваш StringSession, если у вас есть
 const botChatId = 6470317776;
-ffmpeg.setFfmpegPath("E:\\ffmpeg\\bin\\ffmpeg.exe");
+ffmpeg.setFfmpegPath(process.env.FFMPEG);
 
 const client = new TelegramClient(stringSession, apiId, apiHash, {connectionRetries: 5});
 await client.start({

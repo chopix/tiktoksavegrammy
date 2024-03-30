@@ -41,9 +41,21 @@ export async function getStories(url) {
   // const response = await fetch(link, { method: 'POST', body: new URLSearchParams(data), headers: headers });
   // console.log(response)
   const link = `https://storiessaver.org/api/stories?url=${url}`
-  const regex = /\/([^/]+)\/$/;
-  const match = url.match(regex);
-  const identifier = match[1];
+  const urlObject = new URL(url);
+
+// Получение пути из URL
+  const path = urlObject.pathname;
+
+// Извлечение идентификатора из пути
+  const parts = path.split('/');
+  let identifier = parts.pop();
+  if(!identifier) {
+    const parts = url.split('/');
+    identifier = parts[5];
+    if(!identifier) {
+      identifier = parts[6]
+    }
+  }
   console.log(identifier)
 
   const headers = { 'User-Agent': randomUserAgent(), 'Content-Type': 'application/json' };
