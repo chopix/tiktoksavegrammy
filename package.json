@@ -1,0 +1,25 @@
+{
+  "name": "tiktoksavegrammy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@grammyjs/auto-retry": "^1.1.1",
+    "@grammyjs/runner": "^2.0.3",
+    "@grammyjs/storage-file": "^2.4.2",
+    "@sasmeee/igdl": "^1.0.0",
+    "@tobyg74/tiktok-api-dl": "^1.0.14",
+    "cheerio": "^1.0.0-rc.12",
+    "fluent-ffmpeg": "^2.1.2",
+    "grammy": "^1.21.1",
+    "input": "^1.0.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "telegram": "^2.19.20",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
