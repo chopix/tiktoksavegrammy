@@ -15,13 +15,19 @@ export async function getPost(url) {
   const response = await request.json()
   const data = response.data.child_medias_hd
   let res = []
-  data.forEach(e => {
-    if(e.type === 'image') {
-      res.push({type: 'photo', url: e.url})
-    } else {
-      res.push({type: 'video', url: e.url})
-    }
-  })
+  if(!data) {
+    if(response.data.main_media_type === 'image') {
+      res.push({type: 'photo', url: response.data.main_media_hd})
+    } else res.push({type: 'video', url: response.data.main_media_hd})
+  } else {
+    data.forEach(e => {
+      if(e.type === 'image') {
+        res.push({type: 'photo', url: e.url})
+      } else {
+        res.push({type: 'video', url: e.url})
+      }
+    })
+  }
   return res
 }
 
